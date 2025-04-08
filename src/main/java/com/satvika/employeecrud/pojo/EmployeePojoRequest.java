@@ -1,89 +1,41 @@
 package com.satvika.employeecrud.pojo;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
+import lombok.*;
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+
 public class EmployeePojoRequest {
 
+    @NotNull(message = "First name should not be blank")
     private String firstName;
+
+    @NotNull(message = "Last name should not be blank")
     private String lastName;
+
+    @Email(message = "Email should be entered in correct format")
+    @NotNull(message = "Email should not be blank")
     private String email;
+
+    @NotNull(message = "Address should not be blank")
     private String address;
+
+    @Pattern(regexp = "^[0-9]{10}$",message = "phone number should be of 10 digits")
     private String phoneNumber;
+
+    @NotNull(message = "Position should not be blank")
     private String position;
+
+    @NotNull(message = "Salary must be greater than 0")
     private double salary;
+
+    @NotNull(message = "File url is required")
     private String fileUrl;
 
-    public EmployeePojoRequest() {}
-
-    public EmployeePojoRequest(String firstName, String lastName, String email, String address, String phoneNumber, String position, double salary) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.address = address;
-        this.phoneNumber = phoneNumber;
-        this.position = position;
-        this.salary = salary;
-    }
-
-    public String getFileUrl() {
-        return fileUrl;
-    }
-
-    public void setFileUrl(String fileUrl) {
-        this.fileUrl = fileUrl;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public String getPosition() {
-        return position;
-    }
-
-    public void setPosition(String position) {
-        this.position = position;
-    }
-
-    public double getSalary() {
-        return salary;
-    }
-
-    public void setSalary(double salary) {
-        this.salary = salary;
-    }
 }

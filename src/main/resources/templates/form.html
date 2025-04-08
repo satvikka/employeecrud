@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Employee Form</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body class="container mt-5">
+<h2>Employee Form</h2>
+
+<form th:action="@{/employees/save}" method="post" enctype="multipart/form-data" th:object="${employeeForm}">
+    <input type="hidden" th:field="*{id}"/>
+
+    <label>First Name: <input type="text" th:field="*{firstName}" class="form-control"/></label><br/>
+    <label>Last Name: <input type="text" th:field="*{lastName}" class="form-control"/></label><br/>
+    <label>Email: <input type="email" th:field="*{email}" class="form-control"/></label><br/>
+    <label>Address: <input type="text" th:field="*{address}" class="form-control"/></label><br/>
+    <label>Phone: <input type="text" th:field="*{phoneNumber}" class="form-control"/></label><br/>
+    <label>Position: <input type="text" th:field="*{position}" class="form-control"/></label><br/>
+    <label>Salary: <input type="number" th:field="*{salary}" class="form-control"/></label><br/>
+    <label>Profile Picture: <input type="file" th:field="*{file}" class="form-control"/></label><br/>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>
+
+<hr>
+
+<!--<h3>Employee List</h3>
+<table class="table table-bordered">
+    <thead>
+    <tr>
+        <th>Name</th><th>Email</th><th>Phone</th><th>Position</th><th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="emp : ${employees}">
+        <td th:text="${emp.firstName + ' ' + emp.lastName}"></td>
+        <td th:text="${emp.email}"></td>
+        <td th:text="${emp.phoneNumber}"></td>
+        <td th:text="${emp.position}"></td>
+        <td>
+            <a th:href="@{/employees/form(id=${emp.id})}" class="btn btn-sm btn-warning">Edit</a>
+            <a th:href="@{/employees/delete/{id}(id=${emp.id})}" class="btn btn-sm btn-danger"
+               onclick="return confirm('Are you sure?')">Delete</a>
+        </td>
+    </tr>
+    </tbody>-->
+</table>
+
+<a href="/employees/export/excel" class="btn btn-success">Export Excel</a>
+<a href="/employees/download/excel" class="btn btn-info">Download Excel</a>
+<a href="/employees/employee-list" class="btn btn-info">Employee List</a>
+<a href="/employees/export/csv" class="btn btn-info">Export & Download CSV file</a>
+</body>
+</html>
+
+<!--
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Employee Form</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body class="container mt-5">
+<h2>Employee Form</h2>
+
+<form th:action="@{/employees/save}" method="post" enctype="multipart/form-data" th:object="${employeeForm}">
+    <input type="hidden" th:field="*{id}"/>
+
+    <div class="mb-3">
+        <label>First Name:</label>
+        <input type="text" th:field="*{firstName}" class="form-control" required/>
+    </div>
+    <div class="mb-3">
+        <label>Last Name:</label>
+        <input type="text" th:field="*{lastName}" class="form-control" required/>
+    </div>
+    <div class="mb-3">
+        <label>Email:</label>
+        <input type="email" th:field="*{email}" class="form-control" required/>
+    </div>
+    <div class="mb-3">
+        <label>Address:</label>
+        <input type="text" th:field="*{address}" class="form-control" required/>
+    </div>
+    <div class="mb-3">
+        <label>Phone:</label>
+        <input type="text" th:field="*{phoneNumber}" class="form-control" required/>
+    </div>
+    <div class="mb-3">
+        <label>Position:</label>
+        <input type="text" th:field="*{position}" class="form-control" required/>
+    </div>
+    <div class="mb-3">
+        <label>Salary:</label>
+        <input type="number" th:field="*{salary}" class="form-control" min="0" required/>
+    </div>
+    <div class="mb-3">
+        <label>Profile Picture:</label>
+        <input type="file" th:field="*{file}" class="form-control"/>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>
+
+<hr>
+
+<a href="/employees/page/1?sortField=firstName&sortDir=asc" class="btn btn-secondary">Back to Employee List</a>
+
+</body>
+</html>-->
